@@ -1,0 +1,21 @@
+int uniquePaths(int m, int n)
+{
+    int matrix[m][n];
+    for(int i=0;i<n;i++)
+    {
+        matrix[0][i]=1;
+    }
+    for(int j=0;j<m;j++)
+    {
+        matrix[j][0]=1;
+    }
+    for(int c=1;c<m;c++)
+    {
+        for(int d=1;d<n;d++)
+        {
+            matrix[c][d]=matrix[c-1][d]+matrix[c][d-1];
+        }
+    }
+    return matrix[m-1][n-1];
+
+}
