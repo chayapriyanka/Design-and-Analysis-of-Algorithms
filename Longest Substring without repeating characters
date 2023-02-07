@@ -1,0 +1,19 @@
+int lengthOfLongestSubstring(char * s){
+    if(strlen(s) == 0) return 0;
+    int count[250] = {0}, idx = 0, maxLen = 0;
+    for(int i=0; i<strlen(s) && idx < strlen(s);)
+    {
+        if(count[s[idx]] == 0)
+        {
+            count[s[idx]]++;
+            idx++;
+            maxLen = maxLen < idx-i ? idx-i : maxLen;
+        }
+        else
+        {
+            count[s[i]]--;
+            i++;
+        }      
+    }
+    return maxLen;
+}
